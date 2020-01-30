@@ -12,7 +12,7 @@ import java.math.BigDecimal;
 
 public class FinanceApi {
 
-    private static final String BASE_URL = "https://free.currencyconverterapi.com/api/v6";
+    private static final String BASE_URL = "https://free.currconv.com/api/v7";
 
     public String convert(String from, String to, String amount) throws IOException {
         BigDecimal rate = getConversionRate(from, to);
@@ -27,6 +27,7 @@ public class FinanceApi {
         HttpUrl httpUrl = HttpUrl.get(BASE_URL).newBuilder().addPathSegment("convert")
                 .addQueryParameter("q", conversionParameter)
                 .addQueryParameter("compact","ultra")
+                .addQueryParameter("apiKey","5a29aa0db6a00360ea87")
                 .build();
 
         return run(httpUrl).getBigDecimal(conversionParameter);
